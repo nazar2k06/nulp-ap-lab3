@@ -1,7 +1,6 @@
-package Game;
+package Game.Elements;
 
 import Main.*;
-
 import java.io.FileWriter;
 import java.util.ArrayList;
 
@@ -9,8 +8,8 @@ public class Modes {
 	public static interface Mode {
 		Modes.Mode clone();
 
-		String getName();
 		void startGame(Maps.Map map, FileWriter writer);
+		String getName();
 	}
 
 	private static class SimpleMode implements Mode {
@@ -31,17 +30,8 @@ public class Modes {
 		}
 
 		@Override
-		public String getName() {
-			return name;
-		}
-
-		@Override
 		public void startGame(Maps.Map map, FileWriter writer) {
 			ArrayList<Gamer> gamers = new ArrayList<Gamer>();
-
-			if (map == null) {
-				return;
-			}
 
 			for (int i = 0;i < 2;i++) {
 				System.out.println("\n--- Set gamer No" + (i + 1) + "---");
@@ -50,6 +40,12 @@ public class Modes {
 
 			map.startGame(gamers, writer);
 		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
 	}
 
 	private static class FightMode implements Mode {
@@ -78,10 +74,6 @@ public class Modes {
 		public void startGame(Maps.Map map, FileWriter writer) {
 			ArrayList<Gamer> gamers = new ArrayList<Gamer>();
 			int gamers_count;
-
-			if (map == null) {
-				return;
-			}
 
 			gamers_count = Main.enterIntValue("Gamers count: ", 0, 10);
 			System.out.println();
@@ -125,10 +117,6 @@ public class Modes {
 			ArrayList<Command> commands = new ArrayList<Command>();
 			int commands_count;
 
-			if (map == null) {
-				return;
-			}
-
 			commands_count = Main.enterIntValue("Commands count: ", 1, 10);
 			System.out.println();
 
@@ -148,9 +136,9 @@ public class Modes {
 	public static Mode getMode() {
 		int mode_index;
 
-		System.out.println("\n--- Game.Modes ---");
+		System.out.println("\n--- Modes ---");
 		printModesIndexes();
-		System.out.println("--- Game.Modes ---");
+		System.out.println("--- Modes ---");
 
 		mode_index = Main.enterIntValue("Choose Mode:", 0, getModesCout() - 1);
 
@@ -181,7 +169,7 @@ public class Modes {
 
 	public static void printModesInfo() {
 		ArrayList<Mode> modes = getModesList();
-		System.out.println("\n~~~ Game.Modes ~~~");
+		System.out.println("\n~~~ Modes ~~~");
 
 		for (int i = 0;i < modes.size();i++) {
 			System.out.println(modes.get(i));

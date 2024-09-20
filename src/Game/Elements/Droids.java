@@ -1,4 +1,4 @@
-package Game;
+package Game.Elements;
 
 import Main.*;
 
@@ -369,9 +369,9 @@ public class Droids {
 	public static Droid getDroid() {
 		int droid_index;
 
-		System.out.println("\n--- Game.Droids ---");
+		System.out.println("\n--- Droids ---");
 		printDroidsIndexes();
-		System.out.println("--- Game.Droids ---");
+		System.out.println("--- Droids ---");
 
 		droid_index = Main.enterIntValue("Choose Droid:", 0, getDroidsCount() - 1);
 
@@ -403,7 +403,7 @@ public class Droids {
 
 	public static void printDroidsInfo() {
 		ArrayList<Droid> droids = getDroidsList();
-		System.out.println("\n~~~ Game.Droids ~~~");
+		System.out.println("\n~~~ Droids ~~~");
 
 		for (int i = 0;i < droids.size();i++) {
 			System.out.println(droids.get(i));

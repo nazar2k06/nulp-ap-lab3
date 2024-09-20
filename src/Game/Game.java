@@ -1,26 +1,25 @@
 package Game;
 
 import Main.*;
+import Game.Elements.Droids;
+import Game.Elements.Maps;
+import Game.Elements.Modes;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Game {
-	public Game() {
-
-	}
-
 	public void menu() {
 		while (true) {
 			int menu_select = 0;
 
-			System.out.println("\n~~~ Game.Droids game menu ~~~");
+			System.out.println("\n~~~ Droids game menu ~~~");
 			System.out.println(" 0. Exit");
-			System.out.println(" 1. Show Game.Droids");
-			System.out.println(" 2. Show Game.Maps");
-			System.out.println(" 3. Show Game.Modes");
+			System.out.println(" 1. Show Droids");
+			System.out.println(" 2. Show Maps");
+			System.out.println(" 3. Show Modes");
 			System.out.println(" 4. Read game from file");
-			System.out.println(" 5. Start Game.Game");
+			System.out.println(" 5. Start Game");
 
 			menu_select = Main.enterIntValue("Select an item:", 0, 5);
 
@@ -47,11 +46,12 @@ public class Game {
 	}
 
 	private void startGame() {
-		System.out.println("\n~~~ Game.Game start ~~~");
+		System.out.println("\n~~~ Game start ~~~");
 
 		Maps.Map map = Maps.getMap();
 		Modes.Mode mode = Modes.getMode();
 		FileWriter writer = null;
+
 		String file_name = Main.enterStringValue("Write file name (Enter to none): ");
 
 		if (!file_name.isEmpty()) {

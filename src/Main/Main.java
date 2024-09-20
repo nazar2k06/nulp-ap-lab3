@@ -1,7 +1,6 @@
 package Main;
 
 import Game.*;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -71,7 +70,7 @@ public class Main {
 			try {
 				writer.write(string);
 			} catch (IOException e) {
-				throw new RuntimeException(e);
+				e.printStackTrace();
 			}
 		}
 	}
@@ -83,7 +82,7 @@ public class Main {
 			try {
 				writer.write(string + "\n");
 			} catch (IOException e) {
-				throw new RuntimeException(e);
+				e.printStackTrace();
 			}
 		}
 	}

@@ -1,7 +1,6 @@
-package Game;
+package Game.Elements;
 
 import Main.*;
-
 import java.util.ArrayList;
 
 public class Command {
@@ -9,7 +8,7 @@ public class Command {
 	public ArrayList<Gamer> gamers;
 
 	public Command() {
-		name = "Game.Command";
+		name = "Game.Elements.Command";
 		gamers = null;
 	}
 

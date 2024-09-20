@@ -1,7 +1,6 @@
-package Game;
+package Game.Elements;
 
 import Main.*;
-
 import java.io.FileWriter;
 import java.util.ArrayList;
 
@@ -90,17 +89,17 @@ public class Maps {
 
 			Main.printlnWithFile("\n~~~ Commans ~~~", writer);
 			for (int i = 0;i < commands.size();i++) {
-				Main.printlnWithFile("--- Game.Command " + (i + 1) + " ---", writer);
-				Main.printlnWithFile("Game.Command - " + commands.get(i), writer);
+				Main.printlnWithFile("--- Command " + (i + 1) + " ---", writer);
+				Main.printlnWithFile("Command - " + commands.get(i), writer);
 
 				for (int j = 0;j < commands.get(i).gamers.size();j++) {
-					Main.printlnWithFile("--- Game.Gamer " + (j + 1) + " ---", writer);
-					Main.printlnWithFile("Game.Gamer - " + commands.get(i).gamers.get(j), writer);
+					Main.printlnWithFile("--- Gamer " + (j + 1) + " ---", writer);
+					Main.printlnWithFile("Gamer - " + commands.get(i).gamers.get(j), writer);
 					Main.printlnWithFile("Droid - " + commands.get(i).gamers.get(j).droid.getName(), writer);
-					Main.printlnWithFile("--- Game.Gamer " + (j + 1) + " ---\n", writer);
+					Main.printlnWithFile("--- Gamer " + (j + 1) + " ---\n", writer);
 				}
 
-				Main.printlnWithFile("--- Game.Command " + (i + 1) + " ---\n", writer);
+				Main.printlnWithFile("--- Command " + (i + 1) + " ---\n", writer);
 			}
 
 			Main.delay(8000);
@@ -236,7 +235,10 @@ public class Maps {
 				}
 				Main.printlnWithFile("--- Сonclusion for " + slave + " ---\n", writer);
 
-				gamers.removeIf(gamer -> gamer.droid.getHealth() == 0);
+				if (gamers.size() > 1) {
+					gamers.removeIf(gamer -> gamer.droid.getHealth() == 0);
+				}
+
 				Main.delay(4000);
 			}
 
@@ -253,17 +255,17 @@ public class Maps {
 
 			Main.printlnWithFile("\n~~~ Commans ~~~", writer);
 			for (int i = 0;i < commands.size();i++) {
-				Main.printlnWithFile("--- Game.Command " + (i + 1) + " ---", writer);
-				Main.printlnWithFile("Game.Command - " + commands.get(i), writer);
+				Main.printlnWithFile("--- Command " + (i + 1) + " ---", writer);
+				Main.printlnWithFile("Command - " + commands.get(i), writer);
 
 				for (int j = 0;j < commands.get(i).gamers.size();j++) {
-					Main.printlnWithFile("--- Game.Gamer " + (j + 1) + " ---", writer);
-					Main.printlnWithFile("Game.Gamer - " + commands.get(i).gamers.get(j), writer);
+					Main.printlnWithFile("--- Gamer " + (j + 1) + " ---", writer);
+					Main.printlnWithFile("Gamer - " + commands.get(i).gamers.get(j), writer);
 					Main.printlnWithFile("Droid - " + commands.get(i).gamers.get(j).droid.getName(), writer);
-					Main.printlnWithFile("--- Game.Gamer " + (j + 1) + " ---\n", writer);
+					Main.printlnWithFile("--- Gamer " + (j + 1) + " ---\n", writer);
 				}
 
-				Main.printlnWithFile("--- Game.Command " + (i + 1) + " ---\n", writer);
+				Main.printlnWithFile("--- Command " + (i + 1) + " ---\n", writer);
 			}
 
 			Main.delay(8000);
@@ -299,7 +301,7 @@ public class Maps {
 						for (int j = 0; j < command.gamers.size(); j++) {
 							command.gamers.get(j).droid.setHealth(command.gamers.get(j).droid.getHealth() - damage);
 
-							Main.printlnWithFile("Game.Gamer " + command.gamers.get(j).name, writer);
+							Main.printlnWithFile("Gamer " + command.gamers.get(j).name, writer);
 							Main.printlnWithFile("Health " + command.gamers.get(j).droid.getHealth(), writer);
 
 							if (command.gamers.get(j).droid.getHealth() == 0) {
@@ -325,7 +327,10 @@ public class Maps {
 					command.gamers.removeIf(gamer -> gamer.droid.getHealth() == 0);
 				}
 
-				commands.removeIf(command -> command.gamers.isEmpty());
+				if (commands.size() > 1) {
+					commands.removeIf(command -> command.gamers.isEmpty());
+				}
+
 				Main.delay(4000);
 			}
 
@@ -426,17 +431,17 @@ public class Maps {
 
 			Main.printlnWithFile("\n~~~ Commans ~~~", writer);
 			for (int i = 0;i < commands.size();i++) {
-				Main.printlnWithFile("--- Game.Command " + (i + 1) + " ---", writer);
-				Main.printlnWithFile("Game.Command - " + commands.get(i), writer);
+				Main.printlnWithFile("--- Command " + (i + 1) + " ---", writer);
+				Main.printlnWithFile("Command - " + commands.get(i), writer);
 
 				for (int j = 0;j < commands.get(i).gamers.size();j++) {
-					Main.printlnWithFile("--- Game.Gamer " + (j + 1) + " ---", writer);
-					Main.printlnWithFile("Game.Gamer - " + commands.get(i).gamers.get(j), writer);
+					Main.printlnWithFile("--- Gamer " + (j + 1) + " ---", writer);
+					Main.printlnWithFile("Gamer - " + commands.get(i).gamers.get(j), writer);
 					Main.printlnWithFile("Droid - " + commands.get(i).gamers.get(j).droid.getName(), writer);
-					Main.printlnWithFile("--- Game.Gamer " + (j + 1) + " ---\n", writer);
+					Main.printlnWithFile("--- Gamer " + (j + 1) + " ---\n", writer);
 				}
 
-				Main.printlnWithFile("--- Game.Command " + (i + 1) + " ---\n", writer);
+				Main.printlnWithFile("--- Command " + (i + 1) + " ---\n", writer);
 			}
 
 			Main.delay(8000);
@@ -470,7 +475,7 @@ public class Maps {
 					Main.printlnWithFile("--- Map Heal ---", writer);
 					gamer.droid.setHealth(gamer.droid.getMaxHealth());
 
-					Main.printlnWithFile("Game.Gamer " + gamer.name, writer);
+					Main.printlnWithFile("Gamer " + gamer.name, writer);
 					Main.printlnWithFile("Health " + gamer.droid.getHealth(), writer);
 					Main.printlnWithFile("--- Map Heal ---\n", writer);
 				}
@@ -501,9 +506,9 @@ public class Maps {
 	public static Map getMap() {
 		int map_index;
 
-		System.out.println("\n--- Game.Maps ---");
+		System.out.println("\n--- Maps ---");
 		printMapsIndexes();
-		System.out.println("--- Game.Maps ---");
+		System.out.println("--- Maps ---");
 
 		map_index = Main.enterIntValue("Choose map:", 0, getMapsCount() - 1);
 
@@ -534,7 +539,7 @@ public class Maps {
 
 	public static void printMapsInfo() {
 		ArrayList<Map> maps = getMapsList();
-		System.out.println("\n~~~ Game.Maps ~~~");
+		System.out.println("\n~~~ Maps ~~~");
 
 		for (int i = 0;i < maps.size();i++) {
 			System.out.println(maps.get(i));

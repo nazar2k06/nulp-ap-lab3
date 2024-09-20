@@ -1,7 +1,6 @@
-package Game;
+package Game.Elements;
 
 import Main.*;
-
 import java.util.ArrayList;
 
 class Gamer {
