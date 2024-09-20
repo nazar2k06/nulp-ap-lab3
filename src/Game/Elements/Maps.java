@@ -42,10 +42,10 @@ public class Maps {
 
 			Main.printlnWithFile("\n~~~ Gamers ~~~", writer);
 			for (int i = 0;i < gamers.size();i++) {
-				Main.printlnWithFile("--- Command " + (i + 1) + " ---", writer);
-				Main.printlnWithFile("Command - " + gamers.get(i), writer);
+				Main.printlnWithFile("--- Gamer " + (i + 1) + " ---", writer);
+				Main.printlnWithFile("Gamer - " + gamers.get(i), writer);
 				Main.printlnWithFile("Droid - " + gamers.get(i).droid.getName(), writer);
-				Main.printlnWithFile("--- Command " + (i + 1) + " ---\n", writer);
+				Main.printlnWithFile("--- Gamer " + (i + 1) + " ---\n", writer);
 			}
 
 			Main.delay(8000);
@@ -182,17 +182,17 @@ public class Maps {
 
 			Main.printlnWithFile("\n~~~ Gamers ~~~", writer);
 			for (int i = 0;i < gamers.size();i++) {
-				Main.printlnWithFile("--- Command " + (i + 1) + " ---", writer);
-				Main.printlnWithFile("Command - " + gamers.get(i), writer);
+				Main.printlnWithFile("--- Gamer " + (i + 1) + " ---", writer);
+				Main.printlnWithFile("Gamer - " + gamers.get(i), writer);
 				Main.printlnWithFile("Droid - " + gamers.get(i).droid.getName(), writer);
-				Main.printlnWithFile("--- Command " + (i + 1) + " ---\n", writer);
+				Main.printlnWithFile("--- Gamer " + (i + 1) + " ---\n", writer);
 			}
 
 			Main.delay(8000);
 
 			while (gamers.size() > 1) {
-				Gamer master = null;
-				Gamer slave = null;
+				final Gamer master ;
+				final Gamer slave ;
 
 				master = Gamer.getRandomGamer(gamers, null);
 				slave = Gamer.getRandomGamer(gamers, master);
@@ -214,7 +214,7 @@ public class Maps {
 					for (Gamer gamer : gamers) {
 						gamer.droid.setHealth(gamer.droid.getHealth() - damage);
 
-						Main.printlnWithFile("Command " + gamer.name, writer);
+						Main.printlnWithFile("Gamer " + gamer.name, writer);
 						Main.printlnWithFile("Health " + gamer.droid.getHealth(), writer);
 
 						if (gamer.droid.getHealth() == 0) {
@@ -235,9 +235,7 @@ public class Maps {
 				}
 				Main.printlnWithFile("--- Сonclusion for " + slave + " ---\n", writer);
 
-				if (gamers.size() > 1) {
-					gamers.removeIf(gamer -> gamer.droid.getHealth() == 0);
-				}
+				gamers.removeIf(gamer -> (gamer.droid.getHealth() == 0 && gamer != master));
 
 				Main.delay(4000);
 			}
@@ -271,8 +269,8 @@ public class Maps {
 			Main.delay(8000);
 
 			while (commands.size() > 1) {
-				Command command_master = null;
-				Command command_slave = null;
+				final Command command_master;
+				final Command command_slave;
 				Gamer master = null;
 				Gamer slave = null;
 
@@ -327,10 +325,8 @@ public class Maps {
 					command.gamers.removeIf(gamer -> gamer.droid.getHealth() == 0);
 				}
 
-				if (commands.size() > 1) {
-					commands.removeIf(command -> command.gamers.isEmpty());
-				}
-
+				commands.removeIf(command -> (command.gamers.isEmpty() && commands.size() > 1));
+				commands.removeIf(command -> (command.gamers.isEmpty() && command != command_master));
 				Main.delay(4000);
 			}
 
@@ -372,10 +368,10 @@ public class Maps {
 
 			Main.printlnWithFile("\n~~~ Gamers ~~~", writer);
 			for (int i = 0;i < gamers.size();i++) {
-				Main.printlnWithFile("--- Command " + (i + 1) + " ---", writer);
-				Main.printlnWithFile("Command - " + gamers.get(i), writer);
+				Main.printlnWithFile("--- Gamer " + (i + 1) + " ---", writer);
+				Main.printlnWithFile("Gamer - " + gamers.get(i), writer);
 				Main.printlnWithFile("Droid - " + gamers.get(i).droid.getName(), writer);
-				Main.printlnWithFile("--- Command " + (i + 1) + " ---\n", writer);
+				Main.printlnWithFile("--- Gamer " + (i + 1) + " ---\n", writer);
 			}
 
 			Main.delay(8000);
@@ -402,7 +398,7 @@ public class Maps {
 					Main.printlnWithFile("--- Map Heal ---", writer);
 					gamer.droid.setHealth(gamer.droid.getMaxHealth());
 
-					Main.printlnWithFile("Command " + gamer.name, writer);
+					Main.printlnWithFile("Gamer " + gamer.name, writer);
 					Main.printlnWithFile("Health " + gamer.droid.getHealth(), writer);
 					Main.printlnWithFile("--- Map Heal ---\n", writer);
 				}
