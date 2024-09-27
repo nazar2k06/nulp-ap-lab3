@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Modes {
 	public static interface Mode {
-		Modes.Mode clone();
+		Modes.Mode makeObject();
 
 		void startGame(Maps.Map map, FileWriter writer);
 		String getName();
@@ -15,7 +15,7 @@ public class Modes {
 	private static class SimpleMode implements Mode {
 		private static final String name = "SimpleMode";
 
-		public SimpleMode clone() {
+		public SimpleMode makeObject() {
 			return new SimpleMode();
 		}
 
@@ -51,7 +51,7 @@ public class Modes {
 	private static class FightMode implements Mode {
 		private static final String name = "FightMode";
 
-		public FightMode clone() {
+		public FightMode makeObject() {
 			return new FightMode();
 		}
 
@@ -78,13 +78,11 @@ public class Modes {
 			gamers_count = Main.enterIntValue("Gamers count: ", 0, 10);
 			System.out.println();
 
-			do {
-				System.out.println("--- Set gamer No" + (gamers.size() + 1) + "---");
+			for (int i = 0; i < gamers_count;i++) {
+				System.out.println("--- Set gamer No" + (i + 1) + "---");
 				gamers.add(Gamer.getGamer());
-				System.out.println("--- Set gamer No" + (gamers.size()) + "---\n");
-
-				gamers_count--;
-			} while (gamers.size() < 2 || gamers_count > 0);
+				System.out.println("--- Set gamer No" + (i + 1) + "---\n");
+			}
 
 			map.startGame(gamers, writer);
 		}
@@ -93,7 +91,7 @@ public class Modes {
 	private static class CommandMode implements Mode {
 		private static final String name = "CommandMode";
 
-		public CommandMode clone() {
+		public CommandMode makeObject() {
 			return new CommandMode();
 		}
 
@@ -120,13 +118,11 @@ public class Modes {
 			commands_count = Main.enterIntValue("Commands count: ", 1, 10);
 			System.out.println();
 
-			do {
-				System.out.println("--- Set command No" + (commands.size() + 1) + "---");
+			for (int i = 0; i < commands_count;i++) {
+				System.out.println("--- Set command No" + (i + 1) + "---");
 				commands.add(Command.getCommand());
-				System.out.println("--- Set command No" + (commands.size()) + "---\n");
-
-				commands_count--;
-			} while (commands_count > 0);
+				System.out.println("--- Set command No" + (i + 1) + "---\n");
+			}
 
 			map.startCommandGame(commands, writer);
 		}
@@ -148,7 +144,7 @@ public class Modes {
 	public static Mode getModeByIndex(int index) {
 		ArrayList<Mode> modes = getModesList();
 
-		return modes.get(index).clone();
+		return modes.get(index).makeObject();
 	}
 
 	public static int getModesCout() {

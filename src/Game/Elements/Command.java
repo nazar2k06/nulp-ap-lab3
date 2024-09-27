@@ -8,7 +8,7 @@ public class Command {
 	public ArrayList<Gamer> gamers;
 
 	public Command() {
-		name = "Game.Elements.Command";
+		name = "Command";
 		gamers = null;
 	}
 
@@ -28,13 +28,11 @@ public class Command {
 		gamers_count = Main.enterIntValue("Gamers count: ", 1, 10);
 		System.out.println();
 
-		do {
-			System.out.println("--- Set gamer No" + (command.gamers.size() + 1) + "---");
+		for (int i = 0; i < gamers_count;i++) {
+			System.out.println("--- Set gamer No" + (i + 1) + "---");
 			command.gamers.add(Gamer.getGamer());
-			System.out.println("--- Set gamer No" + (command.gamers.size()) + "---\n");
-
-			gamers_count--;
-		} while (gamers_count > 0);
+			System.out.println("--- Set gamer No" + (i + 1) + "---\n");
+		}
 
 		return command;
 	}

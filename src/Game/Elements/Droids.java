@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Droids {
 	public static interface Droid {
-		Droid clone();
+		Droid makeObject();
 		void hit(Droid other, FileWriter writer);
 
 		void setHealth(int health);
@@ -32,7 +32,7 @@ public class Droids {
 		}
 
 		@Override
-		public SimpleDroid clone() {
+		public SimpleDroid makeObject() {
 			return new SimpleDroid();
 		}
 
@@ -116,7 +116,7 @@ public class Droids {
 		}
 
 		@Override
-		public SuperDroid clone() {
+		public SuperDroid makeObject() {
 			return new SuperDroid();
 		}
 
@@ -206,7 +206,7 @@ public class Droids {
 		}
 
 		@Override
-		public FreezeDroid clone() {
+		public FreezeDroid makeObject() {
 			return new FreezeDroid();
 		}
 
@@ -294,7 +294,7 @@ public class Droids {
 		}
 
 		@Override
-		public FireDroid clone() {
+		public FireDroid makeObject() {
 			return new FireDroid();
 		}
 
@@ -381,7 +381,7 @@ public class Droids {
 	public static Droid getDroidByIndex(int index) {
 		ArrayList<Droid> droids = getDroidsList();
 
-		return droids.get(index).clone();
+		return droids.get(index).makeObject();
 	}
 
 	public static int getDroidsCount() {
@@ -394,7 +394,7 @@ public class Droids {
 		ArrayList<Droid> droids = new ArrayList<>();
 
 		droids.add(new SimpleDroid());
-		droids.add(new SuperDroid());
+		droids.add(new Droids.SuperDroid());
 		droids.add(new FreezeDroid());
 		droids.add(new FireDroid());
 

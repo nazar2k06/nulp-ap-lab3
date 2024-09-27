@@ -8,7 +8,7 @@ class Gamer {
 	public Droids.Droid droid;
 
 	public Gamer() {
-		name = "gamer";
+		name = "Gamer";
 		droid = null;
 	}
 

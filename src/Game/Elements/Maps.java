@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Maps {
 	public static interface Map {
-		Map clone();
+		Map makeObject();
 
 		String getName();
 		void startGame(ArrayList<Gamer> gamers, FileWriter writer);
@@ -16,7 +16,7 @@ public class Maps {
 	private static class SimpleMap implements Map {
 		private static final String name = "SimpleMap";
 
-		public SimpleMap clone() {
+		public SimpleMap makeObject() {
 			return new SimpleMap();
 		}
 
@@ -153,7 +153,7 @@ public class Maps {
 		private static final int max_damage = 40;
 		private static final int damage_chance = 3;
 
-		public PoisonMap clone() {
+		public PoisonMap makeObject() {
 			return new PoisonMap();
 		}
 
@@ -236,7 +236,6 @@ public class Maps {
 				Main.printlnWithFile("--- Сonclusion for " + slave + " ---\n", writer);
 
 				gamers.removeIf(gamer -> (gamer.droid.getHealth() == 0 && gamer != master));
-
 				Main.delay(4000);
 			}
 
@@ -325,7 +324,6 @@ public class Maps {
 					command.gamers.removeIf(gamer -> gamer.droid.getHealth() == 0);
 				}
 
-				commands.removeIf(command -> (command.gamers.isEmpty() && commands.size() > 1));
 				commands.removeIf(command -> (command.gamers.isEmpty() && command != command_master));
 				Main.delay(4000);
 			}
@@ -340,7 +338,7 @@ public class Maps {
 		private static final String name = "HealMap";
 		private static final int heal_chance = 4;
 
-		public HealMap clone() {
+		public HealMap makeObject() {
 			return new HealMap();
 		}
 
@@ -514,7 +512,7 @@ public class Maps {
 	public static Map getMapByIndex(int index) {
 		ArrayList<Map> maps = getMapsList();
 
-		return maps.get(index).clone();
+		return maps.get(index).makeObject();
 	}
 
 	private static int getMapsCount() {
